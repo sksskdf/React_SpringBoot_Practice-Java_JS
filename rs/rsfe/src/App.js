@@ -1,9 +1,13 @@
+import React from 'react';
 
-
-function App() {
+function App({name,gender}) {
   return (
-    <div>Hello</div>
+    <div>{name} , {gender}</div>
   );
+}
+
+App.defaultProps = {
+  name: "halsey"
 }
 
 export default App;
