@@ -5,7 +5,7 @@ import Wrapper from "./Wrapper";
 import Counter from "./Counter";
 import InputSample from "./InputSample";
 import InputsSample from "./InputsSample";
-import GiveUserList from "./giveUserList";
+import User from "./User";
 import '@fontsource/roboto/400.css';
 import {Typography} from "@mui/material";
 
@@ -26,7 +26,7 @@ ReactDOM.render(
               <InputsSample />
           </Wrapper>
           <Wrapper>
-              <GiveUserList />
+              <User />
           </Wrapper>
       </Typography>
   </React.StrictMode>,

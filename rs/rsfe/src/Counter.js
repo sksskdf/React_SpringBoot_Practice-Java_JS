@@ -1,14 +1,26 @@
-import React, {useState} from 'react';
+import React, {useReducer, useState} from 'react';
 import {Button} from "@mui/material";
 
+const reducer=(state,action)=>{
+    switch(action.type){
+        case 'INCREMENT':
+            return state + 1;
+        case 'DECREMENT':
+            return state - 1;
+        default:
+            return state;
+    }
+}
+
 const Counter = () => {
-    const [number,setNumber] = useState(0);
+    const [number,dispatch] = useReducer(reducer,0);
+
     const plus=()=>{
-        setNumber(n=>n+1);
+        dispatch({type:'INCREMENT'});
     }
     const minus=()=>{
         if(number > 0) {
-            setNumber(n=>n- 1);
+            dispatch({type:'DECREMENT'});
         }
     }
 

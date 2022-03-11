@@ -34,6 +34,8 @@ const InputsSample = () => {
                 display:'flex'
             }}>
                 <TextField
+                    autoComplete="off"
+                    label="NAME"
                     variant="outlined"
                     name="name"
                     placeholder="이름"
@@ -41,6 +43,8 @@ const InputsSample = () => {
                     value={name}
                     ref={nameInput} />
                 <TextField
+                    autoComplete="off"
+                    label="NICKNAME"
                     variant="outlined"
                     name="nickname"
                     placeholder="닉네임"

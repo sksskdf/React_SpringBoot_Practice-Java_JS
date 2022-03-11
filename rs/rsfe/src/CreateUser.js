@@ -8,6 +8,8 @@ const CreateUser = ({username,email,onChange,onCreate}) => {
             marginBottom:'20px'
         }}>
             <TextField
+                autoComplete="off"
+                label="USERNAME"
                 variant="outlined"
                 name="username"
                 placeholder="계정명"
@@ -15,6 +17,8 @@ const CreateUser = ({username,email,onChange,onCreate}) => {
                 value={username}
             />
             <TextField
+                autocomplete="off"
+                label="EMAIL"
                 variant="outlined"
                 name="email"
                 placeholder="이메일"
@@ -28,4 +32,4 @@ const CreateUser = ({username,email,onChange,onCreate}) => {
     );
 };
 
-export default CreateUser;
+export default React.memo(CreateUser);
