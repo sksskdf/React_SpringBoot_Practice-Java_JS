@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Button, TextField} from "@mui/material";
 
 const InputSample = () => {
     const [text,setText] = useState('');
@@ -14,7 +15,7 @@ const InputSample = () => {
     const addSome=()=>{
         const list = document.querySelector('#list');
         const inputVal = document.querySelector('#inputVal');
-        const button = document.createElement("button");
+        const button = document.createElement("Button");
         const li = document.createElement("li");
         li.innerText = inputVal.value;
         li.id = Date.now(); button.innerText = "✖";
@@ -33,11 +34,13 @@ const InputSample = () => {
 
     return (
         <div>
-            <input id='inputVal'  onChange={onChange} value={text} />
-            <button onClick={onReset}>초기화</button>
-            <button onClick={addSome}>추가</button>
+            <div style={{display:'flex'}}>
+                <TextField label="Add ToDo" variant="outlined" id='inputVal'  onChange={onChange} value={text} />
+                <Button variant="contained" onClick={onReset}>초기화</Button>
+                <Button variant="contained" onClick={addSome}>추가</Button>
+            </div>
             <div id='list'>
-                <b>todo: {text} </b>
+
             </div>
         </div>
     );

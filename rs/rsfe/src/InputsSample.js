@@ -1,4 +1,5 @@
 import React, {useRef, useState} from 'react';
+import {Button, TextField} from "@mui/material";
 
 const InputsSample = () => {
     const [inputs,setInputs] = useState({
@@ -29,22 +30,33 @@ const InputsSample = () => {
 
     return (
         <div>
-            <input
-                name="name"
-                placeholder="이름"
-                onChange={onChange}
-                value={name}
-                ref={nameInput} />
-            <input
-                name="nickname"
-                placeholder="닉네임"
-                onChange={onChange}
-                value={nickname}
-            />
-            <button onClick={onReset}>초기화</button>
+            <div style={{
+                display:'flex'
+            }}>
+                <TextField
+                    variant="outlined"
+                    name="name"
+                    placeholder="이름"
+                    onChange={onChange}
+                    value={name}
+                    ref={nameInput} />
+                <TextField
+                    variant="outlined"
+                    name="nickname"
+                    placeholder="닉네임"
+                    onChange={onChange}
+                    value={nickname}
+                />
+                <Button
+                    variant="contained"
+                    onClick={onReset}>초기화
+                </Button>
+            </div>
             <div>
-                <b>result: </b>
-                {name} ({nickname})
+                <b>NAME : {name}</b>
+            </div>
+            <div>
+                <b>EMAIL : {nickname}</b>
             </div>
         </div>
     );

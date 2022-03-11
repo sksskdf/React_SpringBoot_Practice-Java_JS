@@ -5,19 +5,30 @@ import Wrapper from "./Wrapper";
 import Counter from "./Counter";
 import InputSample from "./InputSample";
 import InputsSample from "./InputsSample";
-import UserList from "./UserList";
 import GiveUserList from "./giveUserList";
+import '@fontsource/roboto/400.css';
+import {Typography} from "@mui/material";
 
 ReactDOM.render(
   <React.StrictMode>
-      <Wrapper>
-          <App name="harry" gender="male" />
-          <App gender="female" />
-          <Counter />
-          <InputSample />
-          <InputsSample />
-          <GiveUserList />
-      </Wrapper>
+      <Typography>
+          <Wrapper>
+              <App name="harry" gender="male" color="primary"/>
+              <App gender="female" color="textSecondary"/>
+          </Wrapper>
+          <Wrapper>
+              <Counter />
+          </Wrapper>
+          <Wrapper>
+              <InputSample />
+          </Wrapper>
+          <Wrapper>
+              <InputsSample />
+          </Wrapper>
+          <Wrapper>
+              <GiveUserList />
+          </Wrapper>
+      </Typography>
   </React.StrictMode>,
   document.getElementById('root')
 );

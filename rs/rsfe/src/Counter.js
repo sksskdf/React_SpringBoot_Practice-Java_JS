@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Button} from "@mui/material";
 
 const Counter = () => {
     const [number,setNumber] = useState(0);
@@ -14,8 +15,8 @@ const Counter = () => {
     return (
         <div>
            <h1>{number}</h1>
-            <button onClick={minus}>-1</button>
-            <button onClick={plus}>+1</button>
+            <Button variant="contained" onClick={minus}>-1</Button>
+            <Button variant="contained" onClick={plus}>+1</Button>
         </div>
     );
 };

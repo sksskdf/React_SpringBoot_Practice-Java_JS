@@ -1,21 +1,29 @@
 import React from 'react';
+import {Button, TextField} from "@mui/material";
 
 const CreateUser = ({username,email,onChange,onCreate}) => {
     return (
-        <div>
-            <input
+        <div style={{
+            display:'flex',
+            marginBottom:'20px'
+        }}>
+            <TextField
+                variant="outlined"
                 name="username"
                 placeholder="계정명"
                 onChange={onChange}
                 value={username}
             />
-            <input
+            <TextField
+                variant="outlined"
                 name="email"
                 placeholder="이메일"
                 onChange={onChange}
                 value={email}
             />
-            <button onClick={onCreate}>등록</button>
+            <Button
+                variant="contained"
+                onClick={onCreate}>등록</Button>
         </div>
     );
 };
