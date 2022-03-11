@@ -15,9 +15,13 @@ public class userRepositoryTest {
     private UserRepository ur;
 
     @Test
-    void 세이브테스트(){
+    void 세이브_조회테스트(){
         //g
-        User user = new User(null,"harry","1234","010-1234-1234");
+        User user = User.builder()
+                .username("harry")
+                .password("1234")
+                .phone_number("010-1234-1234")
+                .build();
         //w
         User savedUser = ur.save(user);
         Optional<User> findUser = ur.findById(1);
