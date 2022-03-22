@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import CloseIcon from '@mui/icons-material/Close';
 import {
     Alert,
     AlertTitle,
@@ -14,10 +13,34 @@ import {
 } from "@mui/material";
 import {useNavigate} from "react-router-dom";
 
+const BodyBlackoutStyle = ({onSetIsVisible}) => {
+    return (
+        <div
+            className='body-blackout-style'
+            onClick={()=>onSetIsVisible(false)}
+            style={{
+                width:'100%',
+                height:'100%',
+                position:'fixed',
+                left:'50%',
+                top:'50%',
+                transform:'translate(-50%,-50%)',
+                zIndex:'1010',
+                backgroundColor:'rgba(0,0,0,0.10)'
+            }}
+        >
+        </div>
+    )
+}
+
 const SignUp = () => {
     const [id,setId] = useState("");
     const [password,setPassword] = useState("");
     const [phonenumber,setPhonenumber] = useState("");
+    const [isVisible,setIsVisible] = useState(false);
+    const onSetIsVisible = (active) => {
+        setIsVisible(active);
+    }
 
     const idHandler = (e) =>{
         setId(e.currentTarget.value);
@@ -50,6 +73,7 @@ const SignUp = () => {
     const submit = async () =>{
         if(id=="" || password=="" || phonenumber==""){
             setOpen(true);
+
             return;
         }
 
@@ -70,6 +94,7 @@ const SignUp = () => {
             //회원가입성공
             //navigate('/login');
             setOpen2(true);
+            setIsVisible(true);
         }
     }
 
@@ -96,7 +121,7 @@ const SignUp = () => {
                         <Button
                             aria-label="close"
                             color="inherit"
-                            size="small"
+                            size="large"
                             onClick={() => {
                                 navigate("/login");
                             }}
@@ -106,11 +131,26 @@ const SignUp = () => {
                     }
                     sx={{
                         mb: 2,
-                        width:300,
-                        height:50,
+                        width:700,
+                        height:200,
                         fontSize:15,
+                        position:'absolute',
+                        zIndex:'1020',
+                        left:'31%',
+                        top:'15rem',
+                        display:'flex',
+                        flexDirection:'column',
+                        alignItems:'center',
+                        justifyContent:'center'
                 }}
-                >회원가입 성공</Alert>
+                >
+                    <Typography sx={{
+
+                    }}
+                    variant="h4">
+                        회원가입 성공
+                    </Typography>
+                </Alert>
             </Collapse>
             <Typography
                 variant="h5"
@@ -151,6 +191,10 @@ const SignUp = () => {
                 }}
                 onClick={submit}
             >회원가입</Button>
+
+            <div>
+                {isVisible && <BodyBlackoutStyle onSetIsVisible={onSetIsVisible} />}
+            </div>
         </Box>
     );
 };
