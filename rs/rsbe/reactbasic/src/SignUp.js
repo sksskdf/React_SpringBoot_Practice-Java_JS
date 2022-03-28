@@ -1,32 +1,21 @@
 import React, {useState} from 'react';
-import {
-    Alert,
-    AlertTitle,
-    Box,
-    Button,
-    Collapse,
-    FormControl, IconButton,
-    Snackbar,
-    Stack,
-    TextField,
-    Typography
-} from "@mui/material";
+import {Alert, Box, Button, Collapse, Snackbar, TextField, Typography} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 
 const BodyBlackoutStyle = ({onSetIsVisible}) => {
     return (
         <div
             className='body-blackout-style'
-            onClick={()=>onSetIsVisible(false)}
+            onClick={() => onSetIsVisible(false)}
             style={{
-                width:'100%',
-                height:'100%',
-                position:'fixed',
-                left:'50%',
-                top:'50%',
-                transform:'translate(-50%,-50%)',
-                zIndex:'1010',
-                backgroundColor:'rgba(0,0,0,0.10)'
+                width: '100%',
+                height: '100%',
+                position: 'fixed',
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%,-50%)',
+                zIndex: '1010',
+                backgroundColor: 'rgba(0,0,0,0.10)'
             }}
         >
         </div>
@@ -34,23 +23,23 @@ const BodyBlackoutStyle = ({onSetIsVisible}) => {
 }
 
 const SignUp = () => {
-    const [id,setId] = useState("");
-    const [password,setPassword] = useState("");
-    const [phonenumber,setPhonenumber] = useState("");
-    const [isVisible,setIsVisible] = useState(false);
+    const [id, setId] = useState("");
+    const [password, setPassword] = useState("");
+    const [phonenumber, setPhonenumber] = useState("");
+    const [isVisible, setIsVisible] = useState(false);
     const onSetIsVisible = (active) => {
         setIsVisible(active);
     }
 
-    const idHandler = (e) =>{
+    const idHandler = (e) => {
         setId(e.currentTarget.value);
     }
 
-    const pwHandler = (e) =>{
+    const pwHandler = (e) => {
         setPassword(e.currentTarget.value);
     }
 
-    const pnHandler = (e) =>{
+    const pnHandler = (e) => {
         setPhonenumber(e.currentTarget.value);
     }
 
@@ -70,27 +59,26 @@ const SignUp = () => {
         setOpen(false);
     };
 
-    const submit = async () =>{
-        if(id=="" || password=="" || phonenumber==""){
+    const submit = async () => {
+        if (id == "" || password == "" || phonenumber == "") {
             setOpen(true);
 
             return;
         }
 
 
-
-        const res = await fetch("http://localhost:8090/user/add",{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json; charset=utf-8",
+        const res = await fetch("http://localhost:8090/user/add", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
             },
-            body:JSON.stringify({
-                'username':id,
-                'password':password,
-                'phone_number':phonenumber,
+            body: JSON.stringify({
+                'username': id,
+                'password': password,
+                'phone_number': phonenumber,
             }),
         });
-        if(res.status == 200){
+        if (res.status == 200) {
             //회원가입성공
             //navigate('/login');
             setOpen2(true);
@@ -102,7 +90,7 @@ const SignUp = () => {
         <Box
             component="form"
             sx={{
-                '& .MuiTextField-root': { m: 1, width: '25ch' },
+                '& .MuiTextField-root': {m: 1, width: '25ch'},
             }}
             noValidate
             autoComplete="off"
@@ -110,11 +98,11 @@ const SignUp = () => {
             display="flex"
             alignItems="center"
         >
-                <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
-                    <Alert onClose={handleClose} severity="error" >
-                        회원정보를 입력해주세요!
-                    </Alert>
-                </Snackbar>
+            <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="error">
+                    회원정보를 입력해주세요!
+                </Alert>
+            </Snackbar>
             <Collapse in={open2}>
                 <Alert
                     action={
@@ -131,23 +119,21 @@ const SignUp = () => {
                     }
                     sx={{
                         mb: 2,
-                        width:700,
-                        height:200,
-                        fontSize:15,
-                        position:'absolute',
-                        zIndex:'1020',
-                        left:'31%',
-                        top:'15rem',
-                        display:'flex',
-                        flexDirection:'column',
-                        alignItems:'center',
-                        justifyContent:'center'
-                }}
-                >
-                    <Typography sx={{
-
+                        width: 700,
+                        height: 200,
+                        fontSize: 15,
+                        position: 'absolute',
+                        zIndex: '1020',
+                        left: '31%',
+                        top: '15rem',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center'
                     }}
-                    variant="h4">
+                >
+                    <Typography sx={{}}
+                                variant="h4">
                         회원가입 성공
                     </Typography>
                 </Alert>
@@ -155,8 +141,8 @@ const SignUp = () => {
             <Typography
                 variant="h5"
                 sx={{
-                    marginTop:10,
-                    marginBottom:4
+                    marginTop: 10,
+                    marginBottom: 4
                 }}
                 fontWeight="500"
             >
@@ -175,25 +161,25 @@ const SignUp = () => {
                 label="PASSWORD"
                 onChange={pwHandler}
             />
-                <TextField
-                    required
-                    id="outlined-required"
-                    type="text"
-                    label="PHONE_NUMBER"
-                    onChange={pnHandler}
-                />
+            <TextField
+                required
+                id="outlined-required"
+                type="text"
+                label="PHONE_NUMBER"
+                onChange={pnHandler}
+            />
             <Button
                 variant="contained"
                 sx={{
-                    width:220,
-                    height:50,
-                    marginTop:5,
+                    width: 220,
+                    height: 50,
+                    marginTop: 5,
                 }}
                 onClick={submit}
             >회원가입</Button>
 
             <div>
-                {isVisible && <BodyBlackoutStyle onSetIsVisible={onSetIsVisible} />}
+                {isVisible && <BodyBlackoutStyle onSetIsVisible={onSetIsVisible}/>}
             </div>
         </Box>
     );
